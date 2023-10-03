@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
 import { useCharacter } from "../../hooks/useCharacter";
+import "Charactar.css";
 
 export function Characters() {
   const { getAllCharacter, characters, getSingleCharacter } = useCharacter();
 
   useEffect(() => {
-    getAllCharacter;
+    getAllCharacter();
   }, []);
   return (
     <ul>
       {characters.map((item, index) => (
         <div className="todo" key={index}>
           <article className="color">
-            <img src={item.image} />
+            <div className="imagenes">
+              <img src="https://rickandmortyapi.com/api/character/avatar/207.jpeg" />
+
+              <img src="https://rickandmortyapi.com/api/character/avatar/465.jpeg" />
+            </div>
             <div className="personajes">
               <h2>{item.name}</h2>
 
@@ -30,5 +35,3 @@ export function Characters() {
     </ul>
   );
 }
-
-export default Characters;
