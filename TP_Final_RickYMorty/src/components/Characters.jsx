@@ -8,14 +8,12 @@ export function Characters() {
     getAllCharacter();
   }, []);
   return (
-    <ul>
-      {characters.map((item, index) => (
-        <div className="todo" key={index}>
-          <article className="color">
-            <h1>Rick y Morty</h1>
-            <div className="imagenes">
-              <img src={item.image} />
-            </div>
+    <>
+      <div className="titulo">Rick y Morty API</div>
+      <ul className="todo">
+        {characters.map((item, index) => (
+          <li className="contenedor" key={index}>
+            <img className="imagenes" src={item.image} />
             <div className="personajes">
               <h2>{item.name}</h2>
               <h4 key={index}>
@@ -26,9 +24,9 @@ export function Characters() {
               <p>Visto por primera vez</p>
               <h3>{item.origin.name}</h3>
             </div>
-          </article>
-        </div>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
