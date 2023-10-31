@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useCharacter } from "../../hooks/useCharacter";
+import { Header } from "./Header";
 
 export function Characters() {
   const { getAllCharacter, characters, getSingleCharacter } = useCharacter();
@@ -7,24 +8,43 @@ export function Characters() {
   useEffect(() => {
     getAllCharacter();
   }, []);
+  const getStatusColor = (status) => {
+    if (status == "Alive") {
+      return "vivo";
+    } else if (status == "Dead") {
+      return "muerto";
+    } else {
+      return "depa";
+    }
+  };
   return (
     <>
-      <div className="titulo">Rick y Morty API</div>
+      <Header />
       <ul className="todo">
         {characters.map((item, index) => (
-          <li className="contenedor" key={index}>
-            <img className="imagenes" src={item.image} />
-            <div className="personajes">
-              <h2>{item.name}</h2>
-              <h4 key={index}>
-                {item.status} - {item.species}
-              </h4>
-              <p>Ultima localización conocida</p>
-              <h3>{item.location.name}</h3>
-              <p>Visto por primera vez</p>
-              <h3>{item.origin.name}</h3>
-            </div>
-          </li>
+          <div className="fondo" key={index}>
+            <li className="contenedor">
+              <img className="imagenes" src={item.image} />
+              <div className="personajes">
+                <h2>{item.name}</h2>
+
+                <div className="estado">
+                  <div className={`status ${getStatusColor(item.status)}`}>
+                    &#x25CF;
+                  </div>
+                  <div>
+                    <h4 key={index} className="estadoH">
+                      {item.status} - {item.species}
+                    </h4>
+                  </div>
+                </div>
+                <p className="last">Ultima localización conocida:</p>
+                <h3>{item.location.name}</h3>
+                <p className="first">Visto por primera vez:</p>
+                <h3>{item.origin.name}</h3>
+              </div>
+            </li>
+          </div>
         ))}
       </ul>
     </>
