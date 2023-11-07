@@ -15,4 +15,7 @@ export function useCharacter(){
             characters,
             getAllCharacter,
         };
+
+    const episodios = [12, 34, 21];
+        
 }
