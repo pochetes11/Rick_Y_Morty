@@ -38,10 +38,14 @@ export function Characters() {
                     </h4>
                   </div>
                 </div>
-                <p className="last">Ultima localización conocida:</p>
-                <h3>{item.location.name}</h3>
-                <p className="first">Visto por primera vez:</p>
-                <h3>{item.origin.name}</h3>
+                <div className="color-vivo">
+                  <p className="last">Ultima localización conocida:</p>
+                  <h3>{item.location.name}</h3>
+                  <div className="episodios">
+                    <p className="first">Episodios</p>
+                  </div>
+                  <h3></h3>
+                </div>
               </div>
             </li>
           </div>
