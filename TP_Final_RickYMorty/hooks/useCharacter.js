@@ -1,21 +1,24 @@
 import { useState } from "react";
 
-export function useCharacter(){
-     
-    const [characters, setcharacters] = useState([]);
+export function useCharacter() {
+  const [characters, setcharacters] = useState([]);
 
-
-    const getAllCharacter = () => {
-       return fetch("https://rickandmortyapi.com/api/character")
+  const getAllCharacter = () => {
+    return fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
       .then((data) => setcharacters(data.results));
-        };
+  };
 
-        return{
-            characters,
-            getAllCharacter,
-        };
+  const getAllEpisodes = () => {
+    fetch(`https://rickandmortyapi.com/api/episode/${palito}`)
+      .then((response) => response.json())
+      .then((data) => setcharacters(data.results));
 
-    const episodios = [12, 34, 21];
-        
+    console.log(data);
+  };
+
+  return {
+    characters,
+    getAllCharacter,
+  };
 }
